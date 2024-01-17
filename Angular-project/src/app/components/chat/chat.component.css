@@ -1,0 +1,132 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f8ff;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app-container {
+  display: flex;
+  flex-grow: 1;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.user-list-container {
+  width: 400px;
+  padding: 20px;
+  background-color: #e1f5fe;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user {
+  padding: 2px;
+  margin-bottom: 8px;
+  background-color: #b3e0ff;
+  border-radius: 4px;
+}
+
+.user-details {
+  flex-grow: 1;
+}
+
+.user-name {
+  font-weight: bold;
+  transition: color 0.3s; /* Adding a smooth color transition effect */
+}
+
+.user-name:hover {
+  color: #007bff; /* Change the color on hover */
+}
+
+.chat-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.conversation-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.sent {
+  align-self: flex-end;
+  background-color: #12c1e8;
+  color: #030303;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  max-width: 70%; /* Adjust the max-width as needed */
+}
+
+.received {
+  align-self: flex-start;
+  background-color: #eceff1;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  max-width: 70%; /* Adjust the max-width as needed */
+}
+
+.message-content {
+  flex-grow: 1;
+}
+
+.fa-eye {
+  margin-left: 5px; /* Adjust the margin as needed */
+  display: inline-block; /* Ensure the eye icon aligns properly */
+}
+
+
+.input-container {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .user-list-container {
+    width: 100%;
+  }
+}

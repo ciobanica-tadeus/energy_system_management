@@ -1,0 +1,89 @@
+<!--<div class="app-container">-->
+<!--  <div class="user-list-container" *ngIf="userData.roleType === 'ADMIN'">-->
+<!--    <h2>Connected Users</h2>-->
+<!--    <div class="container-fluid" class="user">-->
+<!--      <ul class="list-unstyled">-->
+<!--        <li *ngFor="let contact of contacts">-->
+<!--          <div>-->
+<!--            <i class="fa-solid fa-user"></i>-->
+<!--            <div class="user-details">-->
+<!--              <div class="user-name" (click)="getConversation(contact.userExternalId)">-->
+<!--                {{ contact.name }}-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="chat-container">-->
+<!--    <div class="conversation-container">-->
+<!--      <h2>Chat</h2>-->
+<!--      <div *ngFor="let message of messages">-->
+<!--        <div *ngIf="message.senderId === this.userData.id; else received" class="message sent">-->
+<!--          <div class="message-content">-->
+<!--            {{ message.content }}-->
+<!--          </div>-->
+<!--          <div *ngIf="message.seen">-->
+<!--            <i class="fa-solid fa-eye"></i>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <ng-template #received>-->
+<!--          <div class="message received">{{ message.content }}</div>-->
+<!--        </ng-template>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; The input is done with sendMessage&ndash;&gt;-->
+<!--      <div class="input-container">-->
+<!--        <input [(ngModel)]="message" placeholder="Type your message..."/>-->
+<!--        <button (click)="handleSendMessage()">Send</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<div class="app-container">
+  <div class="user-list-container" *ngIf="userData.roleType === 'ADMIN'">
+    <h2>Connected Users</h2>
+    <div class="container-fluid user">
+      <ul class="list-unstyled">
+        <li *ngFor="let contact of contacts">
+          <div>
+            <i class="fa-solid fa-user"></i>
+            <div class="user-details">
+              <div class="user-name" (click)="getConversation(contact.userExternalId)">
+                {{ contact.name }}
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="chat-container">
+    <div class="conversation-container">
+      <h2>Chat</h2>
+      <div *ngFor="let message of messages" class="message-container">
+        <div *ngIf="message.senderId === userData.id; else received" class="message sent">
+          <div class="message-content">
+            {{ message.content }}
+          </div>
+          <div *ngIf="message.seen">
+            <i class="fa-solid fa-eye"></i>
+          </div>
+        </div>
+        <ng-template #received>
+          <div class="message received">
+            {{ message.content }}
+          </div>
+        </ng-template>
+      </div>
+
+      <!-- The input is done with sendMessage-->
+      <div class="input-container">
+        <input [(ngModel)]="message" placeholder="Type your message..." />
+        <button (click)="handleSendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+</div>

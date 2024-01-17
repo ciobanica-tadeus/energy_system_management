@@ -1,0 +1,61 @@
+<div class="modal fade" id="updateUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form (submit)="onSubmit()">
+          <div class="mb-3">
+            <label for="updateUserName"
+                   class="form-label">Name</label>
+            <input type="text"
+                   class="form-control"
+                   id="updateUserName"
+                   placeholder="{{userDetails?.name}}"
+                   name="updateUserName" [(ngModel)]="name">
+          </div>
+          <div class="mb-3">
+            <label for="updateUserUsername"
+                   class="form-label">Username</label>
+            <input type="text"
+                   class="form-control"
+                   id="updateUserUsername"
+                   placeholder="{{userDetails?.username}}"
+                   name="updateUserUsername" [(ngModel)]="username">
+          </div>
+          <div class="mb-3">
+            <label for="updateUserPassword"
+                   class="form-label">Password</label>
+            <input type="password"
+                   class="form-control"
+                   placeholder="Insert only the new password for change"
+                   id="updateUserPassword" name="updateUserPassword" [(ngModel)]="password">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Role type</label>
+            <div class="form-check">
+              <input type="radio"
+                     id="updateUserAdminRole"
+                     class="form-check-input"
+                     name="updateUserAdminRole" value="ADMIN" [(ngModel)]="role">
+              <label class="form-check-label" for="updateUserAdminRole">ADMIN</label>
+            </div>
+            <div class="form-check">
+              <input type="radio"
+                     id="updateUserClientRole"
+                     class="form-check-input"
+                     name="updateUserClientRole"
+                     value="CLIENT" [(ngModel)]="role">
+              <label class="form-check-label"
+                     for="updateUserClientRole">CLIENT</label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+          >Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

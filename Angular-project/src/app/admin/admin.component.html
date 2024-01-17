@@ -1,0 +1,11 @@
+<app-header (onChangeTableUsers)="onTableUsers($event)"
+            (onChangeTableDevices)="onTableDevices($event)"
+            (onChangeChatComponent)="onChatComponent($event)"/>
+<div class="admin-dashboard" *ngIf="!usersTable && !devicesTable && !chatComponent">
+  <h1>Welcome, Admin!</h1>
+  <p>Choose what to manage from the header</p>
+</div>
+<app-users-table *ngIf="usersTable"/>
+<app-device *ngIf="devicesTable"/>
+<app-chat *ngIf="chatComponent"/>
+

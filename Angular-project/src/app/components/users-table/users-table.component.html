@@ -1,0 +1,45 @@
+<div class="container">
+  <button class="btn btn-primary mb-3"
+          data-bs-toggle="modal"
+          data-bs-target="#addUserModal"> Add User
+  </button>
+  <div class="table-container">
+    <table class="table table-striped table-bordered">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.roleType}}</td>
+        <td>
+          <button class="btn btn-primary btn-sm"
+                  data-bs-toggle="modal"
+                  data-bs-target="#updateUserModal"
+                  (click)="onClickUpdate(user)"
+          >Edit
+          </button>
+          <button class="btn btn-danger btn-sm"
+                  (click)="onDeleteUser(user.id)">Delete
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<app-admin-modal
+  (onSubmitModal)="onAddUser($event)"/>
+
+<app-update-modal
+  (onSubmitUpdateModal)="onUpdateUser($event)"
+  [userDetails]="selectedUser"/>

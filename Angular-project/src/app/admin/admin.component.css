@@ -1,0 +1,16 @@
+.admin-dashboard {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #007bff; /* Blue color */
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #333; /* Dark gray color */
+  margin-bottom: 20px;
+}

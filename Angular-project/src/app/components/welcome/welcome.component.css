@@ -1,0 +1,7 @@
+.header-title {
+  font-size: 26px; /* Adjust the font size as needed */
+  color: #007bff; /* Change the text color to your preferred color */
+  font-weight: bold; /* Make the text bold */
+  text-transform: uppercase; /* Convert the text to uppercase */
+  margin-top: 10px; /* Add top margin for spacing */
+}

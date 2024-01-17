@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <img src="assets/images/123.png" class="app-logo d-inline-block align-top" alt="logo">
+  <a class="navbar-brand" href="#">
+    Energy System Management
+  </a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <button class="btn btn-primary nav-link"
+                [class.active-link]="activeLink === 'chat'"
+                (click)="onChatComponent()">
+          Chat
+        </button>
+      </li>
+    </ul>
+  </div>
+  <button class="btn btn-primary nav-link ms-auto me-2" (click)="logOut()"> Log Out</button>
+</nav>
+<div class="admin-dashboard" *ngIf="!displayChat">
+  <h1>Welcome, Client!</h1>
+  <p>The device/devices that are displayed are yours. Have a good day!☺</p>
+</div>
+<div class="container" *ngIf="!displayChat">
+  <div class="table-container">
+    <table class="table table-bordered table-hover ">
+      <thead>
+      <tr>
+        <th class="text-center">Max Hourly Consumption</th>
+        <th class="text-center">ID</th>
+        <th class="text-center">Name</th>
+        <th class="text-center">Description</th>
+        <th class="text-center">Address</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let device of devices">
+        <td class="text-center max-consumption text-size">{{device.maxHourlyEnergyConsumption}}</td>
+        <td class="text-center text-size">{{device.id}}</td>
+        <td class="text-center text-size">{{device.name}}</td>
+        <td class="text-center text-size">{{device.description}}</td>
+        <td class="text-center text-size">{{device.address}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<app-chat *ngIf="displayChat"></app-chat>

@@ -1,0 +1,49 @@
+<div class="container">
+  <button class="btn btn-primary mb-3"
+          data-bs-toggle="modal"
+          data-bs-target="#addDeviceModal"
+          (click)="setTitle('Add New Device')"> Add Device
+  </button>
+  <div class="table-container">
+    <table class="table table-bordered table-hover ">
+      <thead>
+      <tr>
+        <th class="text-center">Max Hourly Consumption</th>
+        <th class="text-center">ID</th>
+        <th class="text-center">User ID</th>
+        <th class="text-center">Name</th>
+        <th class="text-center">Description</th>
+        <th class="text-center">Address</th>
+        <th class="text-center">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let device of devices">
+        <td class="text-center max-consumption text-size">{{device.maxHourlyEnergyConsumption}}</td>
+        <td class="text-center text-size">{{device.id}}</td>
+        <td class="text-center text-size">{{device.userId}}</td>
+        <td class="text-center text-size">{{device.name}}</td>
+        <td class="text-center text-size">{{device.description}}</td>
+        <td class="text-center text-size">{{device.address}}</td>
+        <td class="text-center">
+          <button class="btn btn-primary btn-sm ms-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#addDeviceModal"
+                  (click)="setTitle('Update Device'); setDeviceId(device.id)"
+          >Edit
+          </button>
+          <button class="btn btn-danger btn-sm"
+                  (click)="onDeleteDevice(device.id)">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<app-add-device-modal
+  [title]="title"
+  [deviceId]="deviceId"
+  (onSubmitAddDeviceModal)="onAddDevice($event)"
+  (onSubmitUpdateDeviceModal)="onUpdateDevice($event)"
+/>

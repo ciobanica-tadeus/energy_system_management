@@ -1,0 +1,140 @@
+version: '3.3'
+
+services:
+  users_db:
+    image: 'postgres'
+    container_name: users_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=users
+    ports:
+      - "4040:5432"
+    networks:
+      demo_net:
+
+  users:
+    image: 'users'
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - users_db
+    environment:
+      - DB_IP=users
+      - DB_PORT=5432
+      - DB_DBNAME=users
+      - DB_USER=postgres
+      - DB_PASSWORD=root
+    networks:
+      demo_net:
+
+  devices_db:
+    image: 'postgres'
+    restart: always
+    container_name: devices_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: devices
+      POSTGRES_PASSWORD: root
+    ports:
+      - "3306:5432"
+    networks:
+      demo_net:
+
+  devices:
+    image: 'devices'
+    restart: always
+    ports:
+      - "8081:8081"
+    depends_on:
+      - devices_db
+    environment:
+      - DB_IP=devices
+      - DB_PORT=5432
+      - DB_DBNAME=devices
+      - DB_USER=postgres
+      - DB_PASSWORD=root
+    networks:
+      demo_net:
+  
+  monitoring_db:
+    image: 'postgres'
+    restart: always
+    container_name: monitoring_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: monitoring
+      POSTGRES_PASSWORD: root
+    ports:
+      - "3307:5432"
+    networks:
+      demo_net:
+
+  monitoring:
+    image: 'monitoring'
+    restart: always
+    ports:
+      - "8082:8082"
+    depends_on:
+      - monitoring_db
+    environment:
+      - DB_IP=monitoring
+      - DB_PORT=5432
+      - DB_DBNAME=monitoring
+      - DB_USER=postgres
+      - DB_PASSWORD=root
+    networks:
+      demo_net:
+  
+  chat_db:
+    image: 'postgres'
+    restart: always
+    container_name: chat_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: chat
+      POSTGRES_PASSWORD: root
+    ports:
+      - "3308:5432"
+    networks:
+      demo_net:
+
+  chat:
+    image: 'chat'
+    restart: always
+    ports:
+      - "8084:8084"
+    depends_on:
+      - chat_db
+    environment:
+      - DB_IP=chat
+      - DB_PORT=5432
+      - DB_DBNAME=chat
+      - DB_USER=postgres
+      - DB_PASSWORD=root
+    networks:
+      demo_net:
+
+  rabbit:
+      container_name: rabbit
+      hostname: rabbit
+      image: 'rabbitmq:3-management'
+      restart: always
+      ports:
+      - "5672:5672"
+      - "15672:15672"
+      networks:
+          demo_net:
+
+  frontend:
+    container_name: frontend
+    hostname: frontend
+    image: 'frontend'
+    ports:
+      - "4200:80"
+    networks:
+      demo_net:
+
+networks:
+  demo_net:
